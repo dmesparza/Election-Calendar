@@ -8,20 +8,27 @@
 
 import UIKit
 import EventKit
+import CoreData
 
 class ViewController: UIViewController {
+    
+    var elections: [SavedEvents] = []
+    
+    var dataController:DataController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-         //Do any additional setup after loading the view, typically from a nib.
+        let fetchRequest:NSFetchRequest = SavedEvents.fetchRequest()
+        if let result = try? dataController.viewContext.fetch(fetchRequest) {
+            elections = result
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
          //Dispose of any resources that can be recreated.
     }
-    
-    var dataController:DataController!
     
     func createEvents() {
         
@@ -51,8 +58,7 @@ class ViewController: UIViewController {
                     
                     do {
                         try store.save(event, span: .thisEvent)
-                        
-                        eventsCreated.append(event.eventIdentifier)
+                        try self.dataController.viewContext.save()
                         try store.commit()
                     } catch let error as NSError{
                         print("Event creation error is \(error).")
@@ -73,9 +79,9 @@ class ViewController: UIViewController {
                 print("delete granted \(granted)")
                 print("delete store access error \(error.debugDescription)")
         
-                    for deadManWalking in eventsCreated {
+                    for deadManWalking in self.elections {
                     
-                        if let eventToRemove = store.event(withIdentifier: deadManWalking) {
+                        if let eventToRemove = store.event(withIdentifier: deadManWalking.eventIDs!) {
                             print("Deleted event \(eventToRemove)")
                     
                             do {

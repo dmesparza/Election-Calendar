@@ -8,4 +8,4 @@
 
 import Foundation
 
-var eventsCreated = [String]()
+var eventsCreated: [String] = []
