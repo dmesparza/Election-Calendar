@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B66F253E20BB027100C9F111 /* Elections.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B66F253C20BB027100C9F111 /* Elections.xcdatamodeld */; };
+		B66F254120BB101800C9F111 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F254020BB101800C9F111 /* DataController.swift */; };
+		B692220A20AF715700651CED /* EventsCreated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B692220920AF715700651CED /* EventsCreated.swift */; };
 		B6E29F67209BAA550044D199 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29F66209BAA550044D199 /* AppDelegate.swift */; };
 		B6E29F69209BAA560044D199 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29F68209BAA560044D199 /* ViewController.swift */; };
 		B6E29F6C209BAA560044D199 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E29F6A209BAA560044D199 /* Main.storyboard */; };
 		B6E29F6E209BAA560044D199 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6E29F6D209BAA560044D199 /* Assets.xcassets */; };
 		B6E29F71209BAA560044D199 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E29F6F209BAA560044D199 /* LaunchScreen.storyboard */; };
 		B6E29F7C209BAA560044D199 /* Election_CalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29F7B209BAA560044D199 /* Election_CalendarTests.swift */; };
+		B6E29F8720A23E840044D199 /* Calendars.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29F8620A23E840044D199 /* Calendars.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +30,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B66F253D20BB027100C9F111 /* Elections.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Elections.xcdatamodel; sourceTree = "<group>"; };
+		B66F254020BB101800C9F111 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		B692220920AF715700651CED /* EventsCreated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCreated.swift; sourceTree = "<group>"; };
 		B6E29F63209BAA550044D199 /* Election Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Election Calendar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E29F66209BAA550044D199 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6E29F68209BAA560044D199 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +43,7 @@
 		B6E29F77209BAA560044D199 /* Election CalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Election CalendarTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E29F7B209BAA560044D199 /* Election_CalendarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Election_CalendarTests.swift; sourceTree = "<group>"; };
 		B6E29F7D209BAA560044D199 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6E29F8620A23E840044D199 /* Calendars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendars.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B66F253F20BB0A8700C9F111 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B66F253C20BB027100C9F111 /* Elections.xcdatamodeld */,
+				B66F254020BB101800C9F111 /* DataController.swift */,
+			);
+			name = Model;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		B6E29F5A209BAA550044D199 = {
 			isa = PBXGroup;
 			children = (
@@ -77,8 +95,11 @@
 		B6E29F65209BAA550044D199 /* Election Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				B66F253F20BB0A8700C9F111 /* Model */,
 				B6E29F66209BAA550044D199 /* AppDelegate.swift */,
 				B6E29F68209BAA560044D199 /* ViewController.swift */,
+				B692220920AF715700651CED /* EventsCreated.swift */,
+				B6E29F8620A23E840044D199 /* Calendars.swift */,
 				B6E29F6A209BAA560044D199 /* Main.storyboard */,
 				B6E29F6D209BAA560044D199 /* Assets.xcassets */,
 				B6E29F6F209BAA560044D199 /* LaunchScreen.storyboard */,
@@ -198,7 +219,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6E29F69209BAA560044D199 /* ViewController.swift in Sources */,
+				B66F254120BB101800C9F111 /* DataController.swift in Sources */,
+				B6E29F8720A23E840044D199 /* Calendars.swift in Sources */,
 				B6E29F67209BAA550044D199 /* AppDelegate.swift in Sources */,
+				B66F253E20BB027100C9F111 /* Elections.xcdatamodeld in Sources */,
+				B692220A20AF715700651CED /* EventsCreated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +484,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B66F253C20BB027100C9F111 /* Elections.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B66F253D20BB027100C9F111 /* Elections.xcdatamodel */,
+			);
+			currentVersion = B66F253D20BB027100C9F111 /* Elections.xcdatamodel */;
+			path = Elections.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B6E29F5B209BAA550044D199 /* Project object */;
 }
