@@ -64,19 +64,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B633268720BE48E700FC83C3 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B6E29F68209BAA560044D199 /* ViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
 		B66F253F20BB0A8700C9F111 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				B66F253C20BB027100C9F111 /* Elections.xcdatamodeld */,
 				B66F254020BB101800C9F111 /* DataController.swift */,
 			);
-			name = Model;
-			path = "New Group";
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B6E29F5A209BAA550044D199 = {
 			isa = PBXGroup;
 			children = (
+				B6E29F66209BAA550044D199 /* AppDelegate.swift */,
 				B6E29F65209BAA550044D199 /* Election Calendar */,
 				B6E29F7A209BAA560044D199 /* Election CalendarTests */,
 				B6E29F64209BAA550044D199 /* Products */,
@@ -95,9 +103,8 @@
 		B6E29F65209BAA550044D199 /* Election Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				B633268720BE48E700FC83C3 /* View Controller */,
 				B66F253F20BB0A8700C9F111 /* Model */,
-				B6E29F66209BAA550044D199 /* AppDelegate.swift */,
-				B6E29F68209BAA560044D199 /* ViewController.swift */,
 				B692220920AF715700651CED /* EventsCreated.swift */,
 				B6E29F8620A23E840044D199 /* Calendars.swift */,
 				B6E29F6A209BAA560044D199 /* Main.storyboard */,

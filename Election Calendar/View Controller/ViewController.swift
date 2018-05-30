@@ -18,10 +18,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let fetchRequest:NSFetchRequest = SavedEvents.fetchRequest()
+        let fetchRequest:NSFetchRequest<SavedEvents> = SavedEvents.fetchRequest()
         if let result = try? dataController.viewContext.fetch(fetchRequest) {
             elections = result
-            
         }
     }
 
@@ -48,7 +47,6 @@ class ViewController: UIViewController {
                     let sDate: Date? = dateFormatter.date(from: electionEvent.startDate)
                     let event: EKEvent = EKEvent(eventStore: store)
                     
-                    
                     event.title = electionEvent.title
                     event.startDate = sDate
                     event.endDate = sDate
@@ -58,11 +56,16 @@ class ViewController: UIViewController {
                     
                     do {
                         try store.save(event, span: .thisEvent)
-                        try self.dataController.viewContext.save()
                         try store.commit()
-                    } catch let error as NSError{
+                        print("Saved an event to the store.")
+                    } catch let error as NSError {
                         print("Event creation error is \(error).")
                     }
+                    
+                    let eventTBD = SavedEvents(context: self.dataController.viewContext)
+                    eventTBD.eventIDs = event.eventIdentifier
+                    try? self.dataController.viewContext.save()
+                    print("AND saved its ID to Core Data.")
                 }
             }
         }
@@ -100,7 +103,7 @@ class ViewController: UIViewController {
     @IBAction func AddElectionEvents(_ sender: UIButton) {
         deleteEvents()
         createEvents()
-        print(eventsCreated)
+        print()
     }
     
     
