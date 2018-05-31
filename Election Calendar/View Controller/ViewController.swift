@@ -30,10 +30,6 @@ class ViewController: UIViewController {
          //Dispose of any resources that can be recreated.
     }
     
-    func fetchData() {
-        
-    }
-    
     func createEvents() {
         
         for electionEvent in NorthCarolina {
@@ -67,15 +63,14 @@ class ViewController: UIViewController {
                         print("Event creation error is \(error).")
                     }
                     
-                    let eventTBD = SavedEvents(context: self.dataController.viewContext)
-                    eventTBD.eventIDs = event.eventIdentifier
+                    let eventToSave = SavedEvents(context: self.dataController.viewContext)
+                    eventToSave.eventIDs = event.eventIdentifier
                     do {
                         try self.dataController.viewContext.save()
-                        print("AND saved eventID \(eventTBD.eventIDs) to Core Data.")
+                        print("AND saved eventID \(eventToSave.eventIDs!) to Core Data.")
                     } catch {
                         fatalError("Failure to save context \(error).")
                     }
-                    print("AND saved its ID to Core Data.")
                 }
             }
         }
@@ -94,11 +89,13 @@ class ViewController: UIViewController {
         
                     for deadManWalking in self.elections {
                     
-                        if let eventToRemove = store.event(withIdentifier: deadManWalking.eventIDs!) {
-                            print("Deleted event with eventID \(deadManWalking.eventIDs)")
-                    
+                        if let eventToRemove = store.event(withIdentifier: (deadManWalking.eventIDs)!) {
                             do {
                                 try store.remove(eventToRemove,span: .thisEvent)
+                                print("Deleted Calendar event with eventID \(deadManWalking.eventIDs!)")
+                                self.dataController.viewContext.delete(deadManWalking)
+                                try self.dataController.viewContext.save()
+                                print("AND deleted its eventID!")
                             } catch {
                                 print("Delete error is: \(error)")
                             }
@@ -113,6 +110,6 @@ class ViewController: UIViewController {
     @IBAction func AddElectionEvents(_ sender: UIButton) {
         deleteEvents()
         createEvents()
-        print(elections)
+        print("These are \(elections.count) events saved in Core Data.")
     }
 }

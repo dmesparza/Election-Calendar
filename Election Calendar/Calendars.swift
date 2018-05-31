@@ -21,4 +21,4 @@ var FirstEvent = testEvent(title: "Registration Day", startDate: "2018-05-30", e
 var SecondEvent = testEvent(title: "Election Day", startDate: "2018-06-06", endDate: "2018-06-06", isAllDay: true, notes: "Initial info.")
 var ThirdEvent = testEvent(title: "Recall Day", startDate: "2018-06-13", endDate: "2018-06-13", isAllDay: true, notes: "Initial info.")
 
-var NorthCarolina = [FirstEvent,SecondEvent]
+var NorthCarolina = [FirstEvent]
