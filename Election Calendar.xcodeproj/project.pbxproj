@@ -30,7 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B66F253D20BB027100C9F111 /* Elections.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Elections.xcdatamodel; sourceTree = "<group>"; };
+		B66F253D20BB027100C9F111 /*  */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodeld; name = ""; sourceTree = "<group>"; };
 		B66F254020BB101800C9F111 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		B692220920AF715700651CED /* EventsCreated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCreated.swift; sourceTree = "<group>"; };
 		B6E29F63209BAA550044D199 /* Election Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Election Calendar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -496,9 +496,9 @@
 		B66F253C20BB027100C9F111 /* Elections.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				B66F253D20BB027100C9F111 /* Elections.xcdatamodel */,
+				B66F253D20BB027100C9F111 /*  */,
 			);
-			currentVersion = B66F253D20BB027100C9F111 /* Elections.xcdatamodel */;
+			currentVersion = B66F253D20BB027100C9F111 /*  */;
 			path = Elections.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

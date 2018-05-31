@@ -22,11 +22,16 @@ class ViewController: UIViewController {
         if let result = try? dataController.viewContext.fetch(fetchRequest) {
             elections = result
         }
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
          //Dispose of any resources that can be recreated.
+    }
+    
+    func fetchData() {
+        
     }
     
     func createEvents() {
@@ -57,14 +62,19 @@ class ViewController: UIViewController {
                     do {
                         try store.save(event, span: .thisEvent)
                         try store.commit()
-                        print("Saved an event to the store.")
+                        print("Saved an event with ID \(event.eventIdentifier) to the store.")
                     } catch let error as NSError {
                         print("Event creation error is \(error).")
                     }
                     
                     let eventTBD = SavedEvents(context: self.dataController.viewContext)
                     eventTBD.eventIDs = event.eventIdentifier
-                    try? self.dataController.viewContext.save()
+                    do {
+                        try self.dataController.viewContext.save()
+                        print("AND saved eventID \(eventTBD.eventIDs) to Core Data.")
+                    } catch {
+                        fatalError("Failure to save context \(error).")
+                    }
                     print("AND saved its ID to Core Data.")
                 }
             }
@@ -85,7 +95,7 @@ class ViewController: UIViewController {
                     for deadManWalking in self.elections {
                     
                         if let eventToRemove = store.event(withIdentifier: deadManWalking.eventIDs!) {
-                            print("Deleted event \(eventToRemove)")
+                            print("Deleted event with eventID \(deadManWalking.eventIDs)")
                     
                             do {
                                 try store.remove(eventToRemove,span: .thisEvent)
@@ -103,8 +113,6 @@ class ViewController: UIViewController {
     @IBAction func AddElectionEvents(_ sender: UIButton) {
         deleteEvents()
         createEvents()
-        print()
+        print(elections)
     }
-    
-    
 }
