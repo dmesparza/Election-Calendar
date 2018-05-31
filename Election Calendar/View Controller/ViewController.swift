@@ -93,6 +93,10 @@ class ViewController: UIViewController {
                             do {
                                 try store.remove(eventToRemove,span: .thisEvent)
                                 print("Deleted Calendar event with eventID \(deadManWalking.eventIDs!)")
+                            } catch {
+                                print("Delete error is: \(error)")
+                            }
+                            do {
                                 self.dataController.viewContext.delete(deadManWalking)
                                 try self.dataController.viewContext.save()
                                 print("AND deleted its eventID!")
