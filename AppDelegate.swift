@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         dataController.load()
         
-        let controller = self.window!.rootViewController as! ViewController
-        controller.dataController = dataController
+        //let controller = self.window!.rootViewController as! ViewController
+        //controller.dataController = dataController
 
         return true
     }

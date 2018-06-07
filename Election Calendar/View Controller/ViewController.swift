@@ -14,15 +14,34 @@ class ViewController: UIViewController {
     
     var elections: [SavedEvents] = []
     
-    var dataController:DataController!
+    fileprivate let dataController = DataController(modelName: "Elections")
+    
+    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<SavedEvents> = {
+        // Initialize Fetch Request
+        let fetchRequest: NSFetchRequest<SavedEvents> = SavedEvents.fetchRequest()
+        
+        // Initialize Fetched Results Controller
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.dataController.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        // Configure Fetched Results Controller
+        fetchedResultsController.delegate = self
+        
+        return fetchedResultsController
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let fetchRequest:NSFetchRequest<SavedEvents> = SavedEvents.fetchRequest()
-        if let result = try? dataController.viewContext.fetch(fetchRequest) {
-            elections = result
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            let fetchError = error as NSError
+            print("Unable to retrieve eventIDs from Core Data.")
+            print("\(fetchError), \(fetchError.localizedDescription)")
         }
-
+        //let fetchRequest:NSFetchRequest<SavedEvents> = SavedEvents.fetchRequest()
+        //if let result = try? dataController.viewContext.fetch(fetchRequest) {
+        //    elections = result
+        //}
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,12 +81,12 @@ class ViewController: UIViewController {
                     } catch let error as NSError {
                         print("Event creation error is \(error).")
                     }
-                    
-                    let eventToSave = SavedEvents(context: self.dataController.viewContext)
-                    eventToSave.eventIDs = event.eventIdentifier
+
+                    let idToSave = self.fetchedResultsController.object(at: IndexPath)
+                    idToSave.eventIDs = event.eventIdentifier
                     do {
                         try self.dataController.viewContext.save()
-                        print("AND saved eventID \(eventToSave.eventIDs!) to Core Data.")
+                        print("AND saved eventID \(idToSave.eventIDs!) to Core Data.")
                     } catch {
                         fatalError("Failure to save context \(error).")
                     }
@@ -112,8 +131,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func AddElectionEvents(_ sender: UIButton) {
-        deleteEvents()
+        if elections.count > 0 {
+            self.deleteEvents()
+        }
         createEvents()
-        print("These are \(elections.count) events saved in Core Data.")
+        print("These is/are \(elections.count) events saved in Core Data.")
     }
+}
+
+extension ViewController: NSFetchedResultsControllerDelegate {
+    
 }
