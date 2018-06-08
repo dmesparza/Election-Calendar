@@ -17,15 +17,11 @@ class ViewController: UIViewController {
     fileprivate let dataController = DataController(modelName: "Elections")
     
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<SavedEvents> = {
-        // Initialize Fetch Request
         let fetchRequest: NSFetchRequest<SavedEvents> = SavedEvents.fetchRequest()
-        
-        // Initialize Fetched Results Controller
+        let sortDescriptor = NSSortDescriptor(key: "number", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.dataController.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        
-        // Configure Fetched Results Controller
         fetchedResultsController.delegate = self
-        
         return fetchedResultsController
     }()
 
@@ -81,15 +77,6 @@ class ViewController: UIViewController {
                     } catch let error as NSError {
                         print("Event creation error is \(error).")
                     }
-
-                    let idToSave = self.fetchedResultsController.object(at: IndexPath)
-                    idToSave.eventIDs = event.eventIdentifier
-                    do {
-                        try self.dataController.viewContext.save()
-                        print("AND saved eventID \(idToSave.eventIDs!) to Core Data.")
-                    } catch {
-                        fatalError("Failure to save context \(error).")
-                    }
                 }
             }
         }
@@ -105,7 +92,7 @@ class ViewController: UIViewController {
             if (granted) && (error == nil) {
                 print("delete granted \(granted)")
                 print("delete store access error \(error.debugDescription)")
-        
+                
                     for deadManWalking in self.elections {
                     
                         if let eventToRemove = store.event(withIdentifier: (deadManWalking.eventIDs)!) {
@@ -115,13 +102,8 @@ class ViewController: UIViewController {
                             } catch {
                                 print("Delete error is: \(error)")
                             }
-                            do {
-                                self.dataController.viewContext.delete(deadManWalking)
-                                try self.dataController.viewContext.save()
-                                print("AND deleted its eventID!")
-                            } catch {
-                                print("Delete error is: \(error)")
-                            }
+                            self.dataController.viewContext.delete(deadManWalking)
+                            print("And deleted its eventID from Core Data.")
                         } else {
                         print("No events to delete.")
                         }
