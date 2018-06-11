@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         let sortDescriptor = NSSortDescriptor(key: "number", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.dataController.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController.delegate = self
+        //fetchedResultsController.delegate = self
         return fetchedResultsController
     }()
 
@@ -62,6 +62,7 @@ class ViewController: UIViewController {
                     dateFormatter.dateFormat = "yyyy-MM-dd"
                     let sDate: Date? = dateFormatter.date(from: electionEvent.startDate)
                     let event: EKEvent = EKEvent(eventStore: store)
+                    let electionID = SavedEvents(context: self.dataController.managedObjectContext)
                     
                     event.title = electionEvent.title
                     event.startDate = sDate
@@ -73,9 +74,21 @@ class ViewController: UIViewController {
                     do {
                         try store.save(event, span: .thisEvent)
                         try store.commit()
-                        print("Saved an event with ID \(event.eventIdentifier) to the store.")
+                        print("Saved an event to the store.")
+                        
                     } catch let error as NSError {
                         print("Event creation error is \(error).")
+                    }
+                    
+                    electionID.eventIDs = event.eventIdentifier
+                    
+                    do {
+                        try electionID.managedObjectContext?.save()
+                        print("And saved its ID.")
+                    } catch {
+                        let saveError = error as NSError
+                        print("Unable to Save Note")
+                        print("\(saveError), \(saveError.localizedDescription)")
                     }
                 }
             }
@@ -102,25 +115,21 @@ class ViewController: UIViewController {
                             } catch {
                                 print("Delete error is: \(error)")
                             }
-                            self.dataController.viewContext.delete(deadManWalking)
+                            self.dataController.managedObjectContext.delete(deadManWalking)
                             print("And deleted its eventID from Core Data.")
                         } else {
                         print("No events to delete.")
-                        }
+                    }
                 }
             }
         }
     }
     
+    
     @IBAction func AddElectionEvents(_ sender: UIButton) {
-        if elections.count > 0 {
-            self.deleteEvents()
-        }
+        deleteEvents()
         createEvents()
         print("These is/are \(elections.count) events saved in Core Data.")
     }
 }
 
-extension ViewController: NSFetchedResultsControllerDelegate {
-    
-}
