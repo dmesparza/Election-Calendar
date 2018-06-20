@@ -15,29 +15,9 @@ class ViewController: UIViewController {
     var elections: [SavedEvents] = []
     
     fileprivate let dataController = DataController(modelName: "Elections")
-    
-    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<SavedEvents> = {
-        let fetchRequest: NSFetchRequest<SavedEvents> = SavedEvents.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "number", ascending: false)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.dataController.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        //fetchedResultsController.delegate = self
-        return fetchedResultsController
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            let fetchError = error as NSError
-            print("Unable to retrieve eventIDs from Core Data.")
-            print("\(fetchError), \(fetchError.localizedDescription)")
-        }
-        //let fetchRequest:NSFetchRequest<SavedEvents> = SavedEvents.fetchRequest()
-        //if let result = try? dataController.viewContext.fetch(fetchRequest) {
-        //    elections = result
-        //}
     }
 
     override func didReceiveMemoryWarning() {
@@ -84,10 +64,12 @@ class ViewController: UIViewController {
                     
                     do {
                         try electionID.managedObjectContext?.save()
-                        print("And saved its ID.")
+                        print("And saved its ID \(electionID.eventIDs).")
+                        print("These are now objects saved in Core Data.")
+                        
                     } catch {
                         let saveError = error as NSError
-                        print("Unable to Save Note")
+                        print("Unable to save eventID to Core Data.")
                         print("\(saveError), \(saveError.localizedDescription)")
                     }
                 }
@@ -106,20 +88,26 @@ class ViewController: UIViewController {
                 print("delete granted \(granted)")
                 print("delete store access error \(error.debugDescription)")
                 
-                    for deadManWalking in self.elections {
-                    
-                        if let eventToRemove = store.event(withIdentifier: (deadManWalking.eventIDs)!) {
-                            do {
-                                try store.remove(eventToRemove,span: .thisEvent)
-                                print("Deleted Calendar event with eventID \(deadManWalking.eventIDs!)")
-                            } catch {
-                                print("Delete error is: \(error)")
-                            }
-                            self.dataController.managedObjectContext.delete(deadManWalking)
-                            print("And deleted its eventID from Core Data.")
-                        } else {
-                        print("No events to delete.")
-                    }
+                let fetchRequest:NSFetchRequest<SavedEvents> = SavedEvents.fetchRequest()
+                guard let eventsToBeDeleted = try? self.dataController.managedObjectContext.fetch(fetchRequest) else {
+                    print("We couldn't fetch any objects to be deleted.")
+                    return
+                }
+                
+                    for deadManWalking in eventsToBeDeleted {
+                        
+                        guard let eventToRemove = store.event(withIdentifier: (deadManWalking.eventIDs)!) else {
+                            print("Ain't no event here, Chief.")
+                            return
+                        }
+                        do {
+                            try store.remove(eventToRemove,span: .thisEvent)
+                            print("Deleted Calendar event with eventID \(deadManWalking.eventIDs)")
+                        } catch {
+                            print("Delete error is: \(error)")
+                        }
+                        self.dataController.managedObjectContext.delete(deadManWalking)
+                        print("And deleted its eventID from Core Data.")
                 }
             }
         }
@@ -129,7 +117,9 @@ class ViewController: UIViewController {
     @IBAction func AddElectionEvents(_ sender: UIButton) {
         deleteEvents()
         createEvents()
-        print("These is/are \(elections.count) events saved in Core Data.")
     }
 }
 
+extension ViewController: NSFetchedResultsControllerDelegate {
+    
+}
