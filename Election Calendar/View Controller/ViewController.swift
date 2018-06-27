@@ -11,13 +11,14 @@ import EventKit
 import CoreData
 
 class ViewController: UIViewController {
-    
-    var elections: [SavedEvents] = []
-    
-    fileprivate let dataController = DataController(modelName: "Elections")
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,7 +43,6 @@ class ViewController: UIViewController {
                     dateFormatter.dateFormat = "yyyy-MM-dd"
                     let sDate: Date? = dateFormatter.date(from: electionEvent.startDate)
                     let event: EKEvent = EKEvent(eventStore: store)
-                    let electionID = SavedEvents(context: self.dataController.managedObjectContext)
                     
                     event.title = electionEvent.title
                     event.startDate = sDate
@@ -60,18 +60,7 @@ class ViewController: UIViewController {
                         print("Event creation error is \(error).")
                     }
                     
-                    electionID.eventIDs = event.eventIdentifier
-                    
-                    do {
-                        try electionID.managedObjectContext?.save()
-                        print("And saved its ID \(electionID.eventIDs).")
-                        print("These are now objects saved in Core Data.")
-                        
-                    } catch {
-                        let saveError = error as NSError
-                        print("Unable to save eventID to Core Data.")
-                        print("\(saveError), \(saveError.localizedDescription)")
-                    }
+                    let eventForSaving = event.eventIdentifier
                 }
             }
         }
