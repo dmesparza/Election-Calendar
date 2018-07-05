@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B62E0AD120C04B18003BB284 /* Elections.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B62E0ACF20C04B18003BB284 /* Elections.xcdatamodeld */; };
-		B66F254120BB101800C9F111 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F254020BB101800C9F111 /* DataController.swift */; };
+		B6B8451120E574F10085603D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B8451020E574F10085603D /* DataController.swift */; };
 		B6E29F67209BAA550044D199 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29F66209BAA550044D199 /* AppDelegate.swift */; };
 		B6E29F69209BAA560044D199 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29F68209BAA560044D199 /* ViewController.swift */; };
 		B6E29F6C209BAA560044D199 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E29F6A209BAA560044D199 /* Main.storyboard */; };
@@ -30,7 +30,7 @@
 
 /* Begin PBXFileReference section */
 		B62E0AD020C04B18003BB284 /* Elections.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Elections.xcdatamodel; sourceTree = "<group>"; };
-		B66F254020BB101800C9F111 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		B6B8451020E574F10085603D /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		B6E29F63209BAA550044D199 /* Election Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Election Calendar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E29F66209BAA550044D199 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6E29F68209BAA560044D199 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				B62E0ACF20C04B18003BB284 /* Elections.xcdatamodeld */,
-				B66F254020BB101800C9F111 /* DataController.swift */,
+				B6B8451020E574F10085603D /* DataController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -222,8 +222,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6B8451120E574F10085603D /* DataController.swift in Sources */,
 				B6E29F69209BAA560044D199 /* ViewController.swift in Sources */,
-				B66F254120BB101800C9F111 /* DataController.swift in Sources */,
 				B62E0AD120C04B18003BB284 /* Elections.xcdatamodeld in Sources */,
 				B6E29F8720A23E840044D199 /* Calendars.swift in Sources */,
 				B6E29F67209BAA550044D199 /* AppDelegate.swift in Sources */,

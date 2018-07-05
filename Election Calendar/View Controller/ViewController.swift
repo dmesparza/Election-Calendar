@@ -11,14 +11,14 @@ import EventKit
 import CoreData
 
 class ViewController: UIViewController {
-
+    
+    var elections = [SavedEvent]()
+    var moc:NSManagedObjectContext!
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        
+        moc = appDelegate?.persistentContainer.viewContext
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
                     print("create granted \(granted)")
                     print("create store access error \(error.debugDescription)")
                     
-                    // Define event and create it.
+                    // Define EKevent and save it.
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd"
                     let sDate: Date? = dateFormatter.date(from: electionEvent.startDate)
@@ -55,51 +55,40 @@ class ViewController: UIViewController {
                         try store.save(event, span: .thisEvent)
                         try store.commit()
                         print("Saved an event to the store.")
-                        
                     } catch let error as NSError {
                         print("Event creation error is \(error).")
                     }
                     
-                    let eventForSaving = event.eventIdentifier
+                    // Define Core Data event and save it.
+                    let electionEvent = SavedEvent(context: self.moc)
+                    
+                    electionEvent.eventIDs = event.eventIdentifier
+                    
+                    self.appDelegate?.saveContext()
+                    
                 }
             }
+        }
+    }
+    
+    
+    func loadData(){
+        
+        let electionRequest:NSFetchRequest<SavedEvent> = SavedEvent.fetchRequest()
+        
+        let sortDescriptor = NSSortDescriptor(key: "eventIDs", ascending: false)
+        electionRequest.sortDescriptors = [sortDescriptor]
+
+        do {
+            try electionEvents = moc.fetch(electionRequest)
+        } catch {
+            print("Could not load data")
         }
     }
     
 
     func deleteEvents() {
         
-        //Get access to the calendar.
-        let store: EKEventStore = EKEventStore()
-        store.requestAccess(to: .event) { (granted, error) in
-            
-            if (granted) && (error == nil) {
-                print("delete granted \(granted)")
-                print("delete store access error \(error.debugDescription)")
-                
-                let fetchRequest:NSFetchRequest<SavedEvents> = SavedEvents.fetchRequest()
-                guard let eventsToBeDeleted = try? self.dataController.managedObjectContext.fetch(fetchRequest) else {
-                    print("We couldn't fetch any objects to be deleted.")
-                    return
-                }
-                
-                    for deadManWalking in eventsToBeDeleted {
-                        
-                        guard let eventToRemove = store.event(withIdentifier: (deadManWalking.eventIDs)!) else {
-                            print("Ain't no event here, Chief.")
-                            return
-                        }
-                        do {
-                            try store.remove(eventToRemove,span: .thisEvent)
-                            print("Deleted Calendar event with eventID \(deadManWalking.eventIDs)")
-                        } catch {
-                            print("Delete error is: \(error)")
-                        }
-                        self.dataController.managedObjectContext.delete(deadManWalking)
-                        print("And deleted its eventID from Core Data.")
-                }
-            }
-        }
     }
     
     
