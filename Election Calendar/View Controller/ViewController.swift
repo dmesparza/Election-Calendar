@@ -20,6 +20,20 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         moc = appDelegate?.persistentContainer.viewContext
     }
+    
+    func loadData(){
+        
+        let electionRequest:NSFetchRequest<SavedEvent> = SavedEvent.fetchRequest()
+        
+        let sortDescriptor = NSSortDescriptor(key: "eventIDs", ascending: false)
+        electionRequest.sortDescriptors = [sortDescriptor]
+        
+        do {
+            try elections = moc.fetch(electionRequest)
+        } catch {
+            print("Could not load data")
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -65,6 +79,42 @@ class ViewController: UIViewController {
                     electionEvent.eventIDs = event.eventIdentifier
                     
                     self.appDelegate?.saveContext()
+                    print(self.elections)
+                }
+            }
+        }
+    }
+
+    func deleteEvents() {
+        
+        loadData()
+        
+        for deletableEvent in elections {
+            
+            // Get access to the calendar.
+            let store: EKEventStore = EKEventStore()
+            store.requestAccess(to: .event) { (granted, error) in
+                
+                if (granted) && (error == nil) {
+                    print("create granted \(granted)")
+                    print("create store access error \(error.debugDescription)")
+                    
+                    let deletableEvent = SavedEvent(context: self.moc)
+                    let event: EKEvent = EKEvent(eventStore: store)
+                    let identifier = deletableEvent.eventIDs
+                    
+                    func event(withIdentifier identifier: String) -> EKEvent {
+                        let identifier = deletableEvent.eventIDs
+                        return event
+                    }
+                    
+                    do {
+                        try store.remove(event, span: .thisEvent)
+                    } catch let error as NSError {
+                        print("Event creation error is \(error).")
+                    }
+                    
+                    self.elections.remove(at: 0)
                     
                 }
             }
@@ -72,29 +122,10 @@ class ViewController: UIViewController {
     }
     
     
-    func loadData(){
-        
-        let electionRequest:NSFetchRequest<SavedEvent> = SavedEvent.fetchRequest()
-        
-        let sortDescriptor = NSSortDescriptor(key: "eventIDs", ascending: false)
-        electionRequest.sortDescriptors = [sortDescriptor]
-
-        do {
-            try electionEvents = moc.fetch(electionRequest)
-        } catch {
-            print("Could not load data")
-        }
-    }
-    
-
-    func deleteEvents() {
-        
-    }
-    
-    
     @IBAction func AddElectionEvents(_ sender: UIButton) {
-        deleteEvents()
+        //deleteEvents()
         createEvents()
+        print(self.elections)
     }
 }
 
