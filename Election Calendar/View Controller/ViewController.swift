@@ -79,15 +79,13 @@ class ViewController: UIViewController {
                     electionEvent.eventIDs = event.eventIdentifier
                     
                     self.appDelegate?.saveContext()
-                    print(self.elections)
+                    print("Here's what's in the store after creating: \(self.elections).")
                 }
             }
         }
     }
 
     func deleteEvents() {
-        
-        loadData()
         
         for deletableEvent in elections {
             
@@ -96,36 +94,38 @@ class ViewController: UIViewController {
             store.requestAccess(to: .event) { (granted, error) in
                 
                 if (granted) && (error == nil) {
-                    print("create granted \(granted)")
-                    print("create store access error \(error.debugDescription)")
-                    
-                    let deletableEvent = SavedEvent(context: self.moc)
-                    let event: EKEvent = EKEvent(eventStore: store)
-                    let identifier = deletableEvent.eventIDs
-                    
-                    func event(withIdentifier identifier: String) -> EKEvent {
-                        let identifier = deletableEvent.eventIDs
-                        return event
-                    }
+                    print("delete granted \(granted)")
+                    print("delete store access error \(error.debugDescription)")
+            
+                    let fetchRequest: NSFetchRequest<SavedEvent> = SavedEvent.fetchRequest()
+                    fetchRequest.predicate = NSPredicate.init(format: "eventIDs==\(deletableEvent)")
                     
                     do {
-                        try store.remove(event, span: .thisEvent)
-                    } catch let error as NSError {
-                        print("Event creation error is \(error).")
+                        let objects = try self.moc.fetch(fetchRequest)
+                        for object in objects {
+                            self.moc.delete(object)
+                        }
+                        try self.moc.save()
+                    } catch _ {
+                        // error handling
                     }
-                    
-                    self.elections.remove(at: 0)
-                    
+                
                 }
             }
         }
     }
     
+    func deleteSavedData() {
+        self.elections.removeAll()
+        print("Deleted all saved data.")
+    }
+    
     
     @IBAction func AddElectionEvents(_ sender: UIButton) {
-        //deleteEvents()
+        print("Here's what's in the store when the button is pressed: \(self.elections).")
+        deleteEvents()
+        //deleteSavedData()
         createEvents()
-        print(self.elections)
     }
 }
 
