@@ -17,7 +17,7 @@ struct testEvent {
     var notes: String
 }
 
-var FirstEvent = testEvent(title: "Registration Day", startDate: "2018-07-20", endDate: "2018-07-20", isAllDay: true, notes: "Initial info.")
+var FirstEvent = testEvent(title: "Registration Day", startDate: "2018-07-22", endDate: "2018-07-22", isAllDay: true, notes: "Initial info.")
 var SecondEvent = testEvent(title: "Election Day", startDate: "2018-06-27", endDate: "2018-06-27", isAllDay: true, notes: "Initial info.")
 var ThirdEvent = testEvent(title: "Recall Day", startDate: "2018-07-04", endDate: "2018-07-04", isAllDay: true, notes: "Initial info.")
 

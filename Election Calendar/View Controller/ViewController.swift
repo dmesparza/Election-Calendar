@@ -11,28 +11,13 @@ import EventKit
 import CoreData
 
 class ViewController: UIViewController {
-    
-    var elections = [SavedEvent]()
+
     var moc:NSManagedObjectContext!
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
         moc = appDelegate?.persistentContainer.viewContext
-    }
-    
-    func loadData(){
-        
-        let electionRequest:NSFetchRequest<SavedEvent> = SavedEvent.fetchRequest()
-        
-        let sortDescriptor = NSSortDescriptor(key: "eventIDs", ascending: false)
-        electionRequest.sortDescriptors = [sortDescriptor]
-        
-        do {
-            try elections = moc.fetch(electionRequest)
-        } catch {
-            print("Could not load data")
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,11 +60,16 @@ class ViewController: UIViewController {
                     
                     // Define Core Data event and save it.
                     let electionEvent = SavedEvent(context: self.moc)
-                    
+                    print("Here's electionEvent \(electionEvent).")
                     electionEvent.eventIDs = event.eventIdentifier
-                    
+                    print("Here's eventIDs \(electionEvent.eventIDs!).")
                     self.appDelegate?.saveContext()
-                    print("Here's what's in the store after creating: \(self.elections).")
+                    
+                    do {
+                        try self.moc.save()
+                    } catch let error as NSError {
+                        print("Event creation error is \(error).")
+                    }
                 }
             }
         }
@@ -87,7 +77,11 @@ class ViewController: UIViewController {
 
     func deleteEvents() {
         
-        for deletableEvent in elections {
+        var elections = [SavedEvent]()
+        let fetchRequest:NSFetchRequest<SavedEvent> = SavedEvent.fetchRequest()
+        
+        do {
+            let deletables = try moc.fetch(fetchRequest)
             
             // Get access to the calendar.
             let store: EKEventStore = EKEventStore()
@@ -96,35 +90,29 @@ class ViewController: UIViewController {
                 if (granted) && (error == nil) {
                     print("delete granted \(granted)")
                     print("delete store access error \(error.debugDescription)")
-            
-                    let fetchRequest: NSFetchRequest<SavedEvent> = SavedEvent.fetchRequest()
-                    fetchRequest.predicate = NSPredicate.init(format: "eventIDs==\(deletableEvent)")
                     
-                    do {
-                        let objects = try self.moc.fetch(fetchRequest)
-                        for object in objects {
-                            self.moc.delete(object)
+                    for deletable in deletables {
+                        
+                        let event:EKEvent = store.event(withIdentifier: deletable?)
+                        
+                        do {
+                            try store.remove(event, span: .thisEvent)
+                            try self.moc.save()
+                        } catch let error as NSError {
+                            print("First deletion error is \(error).")
                         }
-                        try self.moc.save()
-                    } catch _ {
-                        // error handling
                     }
-                
                 }
+            
             }
+        } catch let error {
+            print(error.localizedDescription)
         }
-    }
-    
-    func deleteSavedData() {
-        self.elections.removeAll()
-        print("Deleted all saved data.")
     }
     
     
     @IBAction func AddElectionEvents(_ sender: UIButton) {
-        print("Here's what's in the store when the button is pressed: \(self.elections).")
         deleteEvents()
-        //deleteSavedData()
         createEvents()
     }
 }
