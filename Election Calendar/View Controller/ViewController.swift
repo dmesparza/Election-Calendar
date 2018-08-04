@@ -18,6 +18,17 @@ class ViewController: UIViewController {
     var elections = [SavedEvent]()
     let fetchRequest:NSFetchRequest<SavedEvent> = SavedEvent.fetchRequest()
     
+    var isEmpty : Bool {
+        
+        do {
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SavedEvent")
+            let count  = try moc.count(for: request)
+            return count == 0 ? true : false
+        } catch {
+            return true
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,37 +92,37 @@ class ViewController: UIViewController {
 
     func deleteEvents() {
         
-        if SavedEvent.self != nil {
-            let deletables = try? moc.fetch(fetchRequest)
-            do {
+        let entity = NSEntityDescription.insertNewObject(forEntityName: "SavedEvent", into: moc) as! SavedEvent
+        
+        entity.setValue(String.self, forKey: "eventIDs")
+        
+        if let id: String? = entity.eventIDs as String {
+            
+        }
+
+        // Get access to the calendar.
+        let store = EKEventStore()
+        store.requestAccess(to: .event) { (granted, error) in
+            
+            if (granted) && (error == nil) {
+                print("delete granted \(granted)")
+                print("delete store access error \(error.debugDescription)")
                 
-                // Get access to the calendar.
-                let store: EKEventStore = EKEventStore()
-                store.requestAccess(to: .event) { (granted, error) in
+                for thing in entity.eventIDs! {
                     
-                    if (granted) && (error == nil) {
-                        print("delete granted \(granted)")
-                        print("delete store access error \(error.debugDescription)")
+                    if let event:EKEvent? = store.event(withIdentifier: thing) {
                         
-                        for deletable in deletables {
-                            
-                            let event:EKEvent = store.event(withIdentifier: deletable?)
-                            
-                            do {
-                                try store.remove(event, span: .thisEvent)
-                                try self.moc.save()
-                            } catch let error as NSError {
-                                print("First deletion error is \(error).")
-                            }
+                        do {
+                            try store.remove(event, span: .thisEvent)
+                            try self.moc.save()
+                        } catch let error as NSError {
+                            print("First deletion error is \(error).")
                         }
                     }
+                    
+                    
                 }
-            } catch let error {
-                print(error.localizedDescription)
             }
-        }
-            
-        
         }
     }
     
