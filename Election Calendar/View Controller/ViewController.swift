@@ -65,23 +65,11 @@ class ViewController: UIViewController {
                     event.notes = electionEvent.notes
                     event.calendar = store.defaultCalendarForNewEvents
                     
+                    
                     do {
                         try store.save(event, span: .thisEvent)
                         try store.commit()
                         print("Saved an event to the store.")
-                    } catch let error as NSError {
-                        print("Event creation error is \(error).")
-                    }
-                    
-                    // Define Core Data event and save it.
-                    let electionEvent = SavedEvent(context: self.moc)
-                    print("Here's electionEvent \(electionEvent).")
-                    electionEvent.eventIDs = event.eventIdentifier
-                    print("Here's eventIDs \(electionEvent.eventIDs!).")
-                    self.appDelegate?.saveContext()
-                    
-                    do {
-                        try self.moc.save()
                     } catch let error as NSError {
                         print("Event creation error is \(error).")
                     }
@@ -92,35 +80,82 @@ class ViewController: UIViewController {
 
     func deleteEvents() {
         
-        let entity = NSEntityDescription.insertNewObject(forEntityName: "SavedEvent", into: moc) as! SavedEvent
-        
-        entity.setValue(String.self, forKey: "eventIDs")
-        
-        if let id: String? = entity.eventIDs as String {
-            
-        }
-
-        // Get access to the calendar.
-        let store = EKEventStore()
+        let store: EKEventStore = EKEventStore()
         store.requestAccess(to: .event) { (granted, error) in
             
             if (granted) && (error == nil) {
                 print("delete granted \(granted)")
                 print("delete store access error \(error.debugDescription)")
                 
-                for thing in entity.eventIDs! {
-                    
-                    if let event:EKEvent? = store.event(withIdentifier: thing) {
-                        
+                // Get the appropriate calendar.
+                var calendar = Calendar.current
+                
+                // Create the start date components
+                var oneDayAgoComponents = DateComponents()
+                oneDayAgoComponents.day = -1
+                var oneDayAgo = calendar.date(byAdding: oneDayAgoComponents, to: Date(), wrappingComponents: false)
+                
+                // Create the end date components.
+                var oneYearFromNowComponents = DateComponents()
+                oneYearFromNowComponents.year = 1
+                var oneYearFromNow = calendar.date(byAdding: oneYearFromNowComponents, to: Date(), wrappingComponents: false)
+                
+                // Create the predicate from the event store's instance method.
+                var predicate: NSPredicate? = nil
+                if let anAgo = oneDayAgo, let aNow = oneYearFromNow {
+                    predicate = store.predicateForEvents(withStart: anAgo, end: aNow, calendars: nil)
+                }
+                
+                // Fetch all events that match the predicate.
+                var events = EKEventStore().events(matching: predicate!)
+                if let aPredicate = predicate {
+                    events = store.events(matching: aPredicate)
+                }
+                
+                for item in events {
+                    if item.notes == "electionCal" {
                         do {
-                            try store.remove(event, span: .thisEvent)
-                            try self.moc.save()
+                            try store.remove(item, span: .thisEvent)
+                            print("Event \(item.eventIdentifier) deleted.")
                         } catch let error as NSError {
-                            print("First deletion error is \(error).")
+                            print("Event deletion error is \(error).")
                         }
                     }
+                }
+            }
+        }
+        for electionEvent in NorthCarolina {
+            
+            // Get access to the calendar.
+            let store: EKEventStore = EKEventStore()
+            store.requestAccess(to: .event) { (granted, error) in
+                
+                if (granted) && (error == nil) {
+                    print("create granted \(granted)")
+                    print("create store access error \(error.debugDescription)")
+                    
+                    // Define EKevent and save it.
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    let sDate: Date? = dateFormatter.date(from: electionEvent.startDate)
+                    let event: EKEvent = EKEvent(eventStore: store)
+                    
+                    event.title = electionEvent.title
+                    event.startDate = sDate
+                    event.endDate = sDate
+                    event.isAllDay = electionEvent.isAllDay
+                    event.notes = electionEvent.notes
+                    event.calendar = store.defaultCalendarForNewEvents
                     
                     
+                    
+                    do {
+                        try store.save(event, span: .thisEvent)
+                        try store.commit()
+                        print("Event \(event.eventIdentifier) created.")
+                    } catch let error as NSError {
+                        print("Event creation error is \(error).")
+                    }
                 }
             }
         }
@@ -129,7 +164,7 @@ class ViewController: UIViewController {
     
     @IBAction func AddElectionEvents(_ sender: UIButton) {
         deleteEvents()
-        createEvents()
+        //createEvents()
     }
 }
 
