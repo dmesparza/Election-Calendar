@@ -10,7 +10,6 @@
 		891178A042D374479848EAA8 /* Pods_Election_Calendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56817D8A3AD7091224E79B35 /* Pods_Election_Calendar.framework */; };
 		B62E0AD120C04B18003BB284 /* Elections.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B62E0ACF20C04B18003BB284 /* Elections.xcdatamodeld */; };
 		B6B8451120E574F10085603D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B8451020E574F10085603D /* DataController.swift */; };
-		B6CD4BC42151C6BD00F032EB /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CD4BB1214EF20000F032EB /* PromiseKit.framework */; };
 		B6E29F67209BAA550044D199 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29F66209BAA550044D199 /* AppDelegate.swift */; };
 		B6E29F69209BAA560044D199 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29F68209BAA560044D199 /* ViewController.swift */; };
 		B6E29F6C209BAA560044D199 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E29F6A209BAA560044D199 /* Main.storyboard */; };
@@ -188,7 +187,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6CD4BC42151C6BD00F032EB /* PromiseKit.framework in Frameworks */,
 				891178A042D374479848EAA8 /* Pods_Election_Calendar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

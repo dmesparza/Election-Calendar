@@ -134,13 +134,17 @@ class ViewController: UIViewController {
                 }
             }
         }
-        return
     }
     
     
     
     @IBAction func AddElectionEvents(_ sender: UIButton) {
-        
+        firstly {
+            deleteEvents()
+            }.then {
+                createEvents()
+            }.done {
+        }
     }
 }
 
