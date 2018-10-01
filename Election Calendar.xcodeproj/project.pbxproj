@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		891178A042D374479848EAA8 /* Pods_Election_Calendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56817D8A3AD7091224E79B35 /* Pods_Election_Calendar.framework */; };
 		B62E0AD120C04B18003BB284 /* Elections.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B62E0ACF20C04B18003BB284 /* Elections.xcdatamodeld */; };
 		B6B8451120E574F10085603D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B8451020E574F10085603D /* DataController.swift */; };
+		B6CD4BC42151C6BD00F032EB /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CD4BB1214EF20000F032EB /* PromiseKit.framework */; };
 		B6E29F67209BAA550044D199 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29F66209BAA550044D199 /* AppDelegate.swift */; };
 		B6E29F69209BAA560044D199 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29F68209BAA560044D199 /* ViewController.swift */; };
 		B6E29F6C209BAA560044D199 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E29F6A209BAA560044D199 /* Main.storyboard */; };
@@ -16,9 +18,136 @@
 		B6E29F71209BAA560044D199 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E29F6F209BAA560044D199 /* LaunchScreen.storyboard */; };
 		B6E29F7C209BAA560044D199 /* Election_CalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29F7B209BAA560044D199 /* Election_CalendarTests.swift */; };
 		B6E29F8720A23E840044D199 /* Calendars.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29F8620A23E840044D199 /* Calendars.swift */; };
+		B8F8C8B525907CAF57AC1517 /* Pods_Election_CalendarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D59870BF9257E3C643967F24 /* Pods_Election_CalendarTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B6CD4B80214EE16900F032EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6CD4B77214EE16900F032EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 63B0AC571D595E1B00FA21D9;
+			remoteInfo = PromiseKit;
+		};
+		B6CD4B82214EE16900F032EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6CD4B77214EE16900F032EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 631751A81D59766500A9DDDC;
+			remoteInfo = "PMKA+Tests";
+		};
+		B6CD4B84214EE16900F032EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6CD4B77214EE16900F032EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6314113C1D59795700E24B9E;
+			remoteInfo = PMKBridgeTests;
+		};
+		B6CD4B86214EE16900F032EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6CD4B77214EE16900F032EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 630019221D596292003B4E30;
+			remoteInfo = PMKCoreTests;
+		};
+		B6CD4B88214EE16900F032EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6CD4B77214EE16900F032EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 633027EA203CC0060037E136;
+			remoteInfo = PMKDeprecatedTests;
+		};
+		B6CD4B8A214EE16900F032EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6CD4B77214EE16900F032EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C0244E622047A6CB00ACB4AC;
+			remoteInfo = "PMKJSA+Tests";
+		};
+		B6CD4B98214EE7EF00F032EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6CD4B8F214EE7EF00F032EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 63B0AC571D595E1B00FA21D9;
+			remoteInfo = PromiseKit;
+		};
+		B6CD4B9A214EE7EF00F032EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6CD4B8F214EE7EF00F032EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 631751A81D59766500A9DDDC;
+			remoteInfo = "PMKA+Tests";
+		};
+		B6CD4B9C214EE7EF00F032EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6CD4B8F214EE7EF00F032EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6314113C1D59795700E24B9E;
+			remoteInfo = PMKBridgeTests;
+		};
+		B6CD4B9E214EE7EF00F032EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6CD4B8F214EE7EF00F032EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 630019221D596292003B4E30;
+			remoteInfo = PMKCoreTests;
+		};
+		B6CD4BA0214EE7EF00F032EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6CD4B8F214EE7EF00F032EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 633027EA203CC0060037E136;
+			remoteInfo = PMKDeprecatedTests;
+		};
+		B6CD4BA2214EE7EF00F032EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6CD4B8F214EE7EF00F032EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C0244E622047A6CB00ACB4AC;
+			remoteInfo = "PMKJSA+Tests";
+		};
+		B6CD4BB0214EF20000F032EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6CD4BA7214EF1FF00F032EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 63B0AC571D595E1B00FA21D9;
+			remoteInfo = PromiseKit;
+		};
+		B6CD4BB2214EF20000F032EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6CD4BA7214EF1FF00F032EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 631751A81D59766500A9DDDC;
+			remoteInfo = "PMKA+Tests";
+		};
+		B6CD4BB4214EF20000F032EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6CD4BA7214EF1FF00F032EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6314113C1D59795700E24B9E;
+			remoteInfo = PMKBridgeTests;
+		};
+		B6CD4BB6214EF20000F032EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6CD4BA7214EF1FF00F032EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 630019221D596292003B4E30;
+			remoteInfo = PMKCoreTests;
+		};
+		B6CD4BB8214EF20000F032EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6CD4BA7214EF1FF00F032EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 633027EA203CC0060037E136;
+			remoteInfo = PMKDeprecatedTests;
+		};
+		B6CD4BBA214EF20000F032EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6CD4BA7214EF1FF00F032EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C0244E622047A6CB00ACB4AC;
+			remoteInfo = "PMKJSA+Tests";
+		};
 		B6E29F78209BAA560044D199 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B6E29F5B209BAA550044D199 /* Project object */;
@@ -29,8 +158,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		37DC1AAF26057BB63DF5EDE0 /* Pods-Election Calendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Election Calendar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Election Calendar/Pods-Election Calendar.debug.xcconfig"; sourceTree = "<group>"; };
+		56817D8A3AD7091224E79B35 /* Pods_Election_Calendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Election_Calendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		70E4289679C1DA89A75C2C40 /* Pods-Election CalendarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Election CalendarTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Election CalendarTests/Pods-Election CalendarTests.debug.xcconfig"; sourceTree = "<group>"; };
+		82265309E5303A14CCBDAF8E /* Pods-Election CalendarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Election CalendarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Election CalendarTests/Pods-Election CalendarTests.release.xcconfig"; sourceTree = "<group>"; };
+		A1E59C07816A5BC6AC74C5B5 /* Pods-Election Calendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Election Calendar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Election Calendar/Pods-Election Calendar.release.xcconfig"; sourceTree = "<group>"; };
 		B62E0AD020C04B18003BB284 /* Elections.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Elections.xcdatamodel; sourceTree = "<group>"; };
 		B6B8451020E574F10085603D /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		B6CD4B77214EE16900F032EB /* PromiseKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = PromiseKit.xcodeproj; sourceTree = "<group>"; };
+		B6CD4B8D214EE7DB00F032EB /* PromiseKit-master */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "PromiseKit-master"; sourceTree = "<group>"; };
+		B6CD4B8F214EE7EF00F032EB /* PromiseKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PromiseKit.xcodeproj; path = "PromiseKit-master/PromiseKit.xcodeproj"; sourceTree = "<group>"; };
+		B6CD4BA7214EF1FF00F032EB /* PromiseKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PromiseKit.xcodeproj; path = "Election Calendar/PromiseKit-master/PromiseKit.xcodeproj"; sourceTree = "<group>"; };
 		B6E29F63209BAA550044D199 /* Election Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Election Calendar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E29F66209BAA550044D199 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6E29F68209BAA560044D199 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,6 +180,7 @@
 		B6E29F7B209BAA560044D199 /* Election_CalendarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Election_CalendarTests.swift; sourceTree = "<group>"; };
 		B6E29F7D209BAA560044D199 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6E29F8620A23E840044D199 /* Calendars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendars.swift; sourceTree = "<group>"; };
+		D59870BF9257E3C643967F24 /* Pods_Election_CalendarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Election_CalendarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +188,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6CD4BC42151C6BD00F032EB /* PromiseKit.framework in Frameworks */,
+				891178A042D374479848EAA8 /* Pods_Election_Calendar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +197,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8F8C8B525907CAF57AC1517 /* Pods_Election_CalendarTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +221,58 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B6CD4B76214EE16800F032EB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6CD4B8F214EE7EF00F032EB /* PromiseKit.xcodeproj */,
+				B6CD4BA7214EF1FF00F032EB /* PromiseKit.xcodeproj */,
+				B6CD4B8D214EE7DB00F032EB /* PromiseKit-master */,
+				B6CD4B77214EE16900F032EB /* PromiseKit.xcodeproj */,
+				56817D8A3AD7091224E79B35 /* Pods_Election_Calendar.framework */,
+				D59870BF9257E3C643967F24 /* Pods_Election_CalendarTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B6CD4B78214EE16900F032EB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B6CD4B81214EE16900F032EB /* PromiseKit.framework */,
+				B6CD4B83214EE16900F032EB /* PMKA+Tests.xctest */,
+				B6CD4B85214EE16900F032EB /* PMKBridgeTests.xctest */,
+				B6CD4B87214EE16900F032EB /* PMKCoreTests.xctest */,
+				B6CD4B89214EE16900F032EB /* PMKDeprecatedTests.xctest */,
+				B6CD4B8B214EE16900F032EB /* PMKJSA+Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B6CD4B90214EE7EF00F032EB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B6CD4B99214EE7EF00F032EB /* PromiseKit.framework */,
+				B6CD4B9B214EE7EF00F032EB /* PMKA+Tests.xctest */,
+				B6CD4B9D214EE7EF00F032EB /* PMKBridgeTests.xctest */,
+				B6CD4B9F214EE7EF00F032EB /* PMKCoreTests.xctest */,
+				B6CD4BA1214EE7EF00F032EB /* PMKDeprecatedTests.xctest */,
+				B6CD4BA3214EE7EF00F032EB /* PMKJSA+Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B6CD4BA8214EF1FF00F032EB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B6CD4BB1214EF20000F032EB /* PromiseKit.framework */,
+				B6CD4BB3214EF20000F032EB /* PMKA+Tests.xctest */,
+				B6CD4BB5214EF20000F032EB /* PMKBridgeTests.xctest */,
+				B6CD4BB7214EF20000F032EB /* PMKCoreTests.xctest */,
+				B6CD4BB9214EF20000F032EB /* PMKDeprecatedTests.xctest */,
+				B6CD4BBB214EF20000F032EB /* PMKJSA+Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		B6E29F5A209BAA550044D199 = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +280,8 @@
 				B6E29F65209BAA550044D199 /* Election Calendar */,
 				B6E29F7A209BAA560044D199 /* Election CalendarTests */,
 				B6E29F64209BAA550044D199 /* Products */,
+				B6CD4B76214EE16800F032EB /* Frameworks */,
+				FA7E3E5E3A16F67165A74F72 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,6 +317,17 @@
 			path = "Election CalendarTests";
 			sourceTree = "<group>";
 		};
+		FA7E3E5E3A16F67165A74F72 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				37DC1AAF26057BB63DF5EDE0 /* Pods-Election Calendar.debug.xcconfig */,
+				A1E59C07816A5BC6AC74C5B5 /* Pods-Election Calendar.release.xcconfig */,
+				70E4289679C1DA89A75C2C40 /* Pods-Election CalendarTests.debug.xcconfig */,
+				82265309E5303A14CCBDAF8E /* Pods-Election CalendarTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -128,9 +335,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6E29F80209BAA560044D199 /* Build configuration list for PBXNativeTarget "Election Calendar" */;
 			buildPhases = (
+				ADF593307FF594AFE502988D /* [CP] Check Pods Manifest.lock */,
 				B6E29F5F209BAA550044D199 /* Sources */,
 				B6E29F60209BAA550044D199 /* Frameworks */,
 				B6E29F61209BAA550044D199 /* Resources */,
+				FBACF96F232DBE3A2AD6A64C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -145,6 +354,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6E29F83209BAA560044D199 /* Build configuration list for PBXNativeTarget "Election CalendarTests" */;
 			buildPhases = (
+				BE2F4CA5488F714C8DD67071 /* [CP] Check Pods Manifest.lock */,
 				B6E29F73209BAA560044D199 /* Sources */,
 				B6E29F74209BAA560044D199 /* Frameworks */,
 				B6E29F75209BAA560044D199 /* Resources */,
@@ -189,6 +399,20 @@
 			mainGroup = B6E29F5A209BAA550044D199;
 			productRefGroup = B6E29F64209BAA550044D199 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B6CD4BA8214EF1FF00F032EB /* Products */;
+					ProjectRef = B6CD4BA7214EF1FF00F032EB /* PromiseKit.xcodeproj */;
+				},
+				{
+					ProductGroup = B6CD4B90214EE7EF00F032EB /* Products */;
+					ProjectRef = B6CD4B8F214EE7EF00F032EB /* PromiseKit.xcodeproj */;
+				},
+				{
+					ProductGroup = B6CD4B78214EE16900F032EB /* Products */;
+					ProjectRef = B6CD4B77214EE16900F032EB /* PromiseKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				B6E29F62209BAA550044D199 /* Election Calendar */,
@@ -196,6 +420,135 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B6CD4B81214EE16900F032EB /* PromiseKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PromiseKit.framework;
+			remoteRef = B6CD4B80214EE16900F032EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6CD4B83214EE16900F032EB /* PMKA+Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "PMKA+Tests.xctest";
+			remoteRef = B6CD4B82214EE16900F032EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6CD4B85214EE16900F032EB /* PMKBridgeTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PMKBridgeTests.xctest;
+			remoteRef = B6CD4B84214EE16900F032EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6CD4B87214EE16900F032EB /* PMKCoreTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PMKCoreTests.xctest;
+			remoteRef = B6CD4B86214EE16900F032EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6CD4B89214EE16900F032EB /* PMKDeprecatedTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PMKDeprecatedTests.xctest;
+			remoteRef = B6CD4B88214EE16900F032EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6CD4B8B214EE16900F032EB /* PMKJSA+Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "PMKJSA+Tests.xctest";
+			remoteRef = B6CD4B8A214EE16900F032EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6CD4B99214EE7EF00F032EB /* PromiseKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PromiseKit.framework;
+			remoteRef = B6CD4B98214EE7EF00F032EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6CD4B9B214EE7EF00F032EB /* PMKA+Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "PMKA+Tests.xctest";
+			remoteRef = B6CD4B9A214EE7EF00F032EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6CD4B9D214EE7EF00F032EB /* PMKBridgeTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PMKBridgeTests.xctest;
+			remoteRef = B6CD4B9C214EE7EF00F032EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6CD4B9F214EE7EF00F032EB /* PMKCoreTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PMKCoreTests.xctest;
+			remoteRef = B6CD4B9E214EE7EF00F032EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6CD4BA1214EE7EF00F032EB /* PMKDeprecatedTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PMKDeprecatedTests.xctest;
+			remoteRef = B6CD4BA0214EE7EF00F032EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6CD4BA3214EE7EF00F032EB /* PMKJSA+Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "PMKJSA+Tests.xctest";
+			remoteRef = B6CD4BA2214EE7EF00F032EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6CD4BB1214EF20000F032EB /* PromiseKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PromiseKit.framework;
+			remoteRef = B6CD4BB0214EF20000F032EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6CD4BB3214EF20000F032EB /* PMKA+Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "PMKA+Tests.xctest";
+			remoteRef = B6CD4BB2214EF20000F032EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6CD4BB5214EF20000F032EB /* PMKBridgeTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PMKBridgeTests.xctest;
+			remoteRef = B6CD4BB4214EF20000F032EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6CD4BB7214EF20000F032EB /* PMKCoreTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PMKCoreTests.xctest;
+			remoteRef = B6CD4BB6214EF20000F032EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6CD4BB9214EF20000F032EB /* PMKDeprecatedTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PMKDeprecatedTests.xctest;
+			remoteRef = B6CD4BB8214EF20000F032EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6CD4BBB214EF20000F032EB /* PMKJSA+Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "PMKJSA+Tests.xctest";
+			remoteRef = B6CD4BBA214EF20000F032EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B6E29F61209BAA550044D199 /* Resources */ = {
@@ -216,6 +569,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		ADF593307FF594AFE502988D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Election Calendar-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE2F4CA5488F714C8DD67071 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Election CalendarTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBACF96F232DBE3A2AD6A64C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Election Calendar/Pods-Election Calendar-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Election Calendar/Pods-Election Calendar-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B6E29F5F209BAA550044D199 /* Sources */ = {
@@ -384,6 +806,7 @@
 		};
 		B6E29F81209BAA560044D199 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37DC1AAF26057BB63DF5EDE0 /* Pods-Election Calendar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -401,6 +824,7 @@
 		};
 		B6E29F82209BAA560044D199 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1E59C07816A5BC6AC74C5B5 /* Pods-Election Calendar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -418,6 +842,7 @@
 		};
 		B6E29F84209BAA560044D199 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70E4289679C1DA89A75C2C40 /* Pods-Election CalendarTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -438,6 +863,7 @@
 		};
 		B6E29F85209BAA560044D199 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 82265309E5303A14CCBDAF8E /* Pods-Election CalendarTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

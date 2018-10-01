@@ -9,6 +9,7 @@
 import UIKit
 import EventKit
 import CoreData
+import PromiseKit
 
 class ViewController: UIViewController {
 
@@ -42,7 +43,7 @@ class ViewController: UIViewController {
          //Dispose of any resources that can be recreated.
     }
     
-    func createEvents(eventsCreated: (Bool) -> Void) {
+    func createEvents() {
         
         for electionEvent in NorthCarolina {
             
@@ -78,7 +79,6 @@ class ViewController: UIViewController {
                 }
             }
         }
-        eventsCreated(true)
     }
     
     
@@ -90,6 +90,7 @@ class ViewController: UIViewController {
         let sDate: Date? = dateFormatter.date(from: (NorthCarolina.first?.startDate)!)
         
         let store: EKEventStore = EKEventStore()
+        
         store.requestAccess(to: .event) { (granted, error) in
             
             if (granted) && (error == nil) {
@@ -120,11 +121,11 @@ class ViewController: UIViewController {
                 if let aPredicate = predicate {
                     events = store.events(matching: aPredicate)
                 }
-                
                 for item in events {
                     if item.notes == "electionCal" {
                         do {
                             try store.remove(item, span: .thisEvent)
+                            try store.commit()
                             print("Event \(item.eventIdentifier) deleted.")
                         } catch let error as NSError {
                             print("Event deletion error is \(error).")
@@ -133,19 +134,13 @@ class ViewController: UIViewController {
                 }
             }
         }
+        return
     }
     
     
     
     @IBAction func AddElectionEvents(_ sender: UIButton) {
-        let handlerBlock: (Bool) -> Void = {
-            if $0 {
-                self.deleteEvents()
-                print("All events deleted.")
-            }
-        }
         
-        createEvents(eventsCreated: handlerBlock)
     }
 }
 
